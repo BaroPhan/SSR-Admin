@@ -15,6 +15,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
+                    <a href="/add-product" class="btn btn-primary"> <i style="margin-right: 10px;" class="nav-icon fas fa-plus"></i>Add Product</a>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -69,7 +70,7 @@
                                                 <a href="/update-product?id=<%= p._id%>" class="btn border-shadow update">
                                                     <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
                                                 </a>
-                                                <a class="btn border-shadow delete" user-id=<%= p._id%> >
+                                                <a class="btn border-shadow product-delete" product-id=<%= p._id%> >
                                                     <span class="text-gradient"><i class="fas fa-times"></i></span>
                                                 </a>
                                             </td>

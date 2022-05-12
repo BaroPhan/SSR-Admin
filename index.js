@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const cors = require('cors')
 const path = require('path')
+const cookieParser = require('cookie-parser')
 const connectDB = require('./server/database/connection')
 
 const app = express()
@@ -16,15 +17,20 @@ app.use(morgan("tiny"))
 app.use(cors())
 
 connectDB()
+app.use(cookieParser())
 app.use(bodyparser.urlencoded({ extended : true}))
 app.set("view engine", "ejs")
 
 // load assets
 app.use('/dist', express.static(path.resolve(__dirname, "assets/dist")))
 app.use('/plugins', express.static(path.resolve(__dirname, "assets/plugins")))
+app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 
 // load routers
 app.use('/', require('./server/routes/userRouter'))
+app.use('/', require('./server/routes/productRouter'))
+app.use('/', require('./server/routes/categoryRouter'))
+app.use('/', require('./server/routes/authRouter'))
 app.use('/', require('./server/routes/router'))
 
 

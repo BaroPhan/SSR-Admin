@@ -1,6 +1,5 @@
 const User = require('../models/User')
 const CryptoJS = require('crypto-js')
-// const { verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('./verifyToken');
 
 //GET USER/USERS
 exports.get = async (req, res) => {
@@ -39,11 +38,12 @@ exports.post = async (req, res) => {
 exports.put = async (req, res) => {
     if (req.body.password)
         req.body.password = CryptoJS.AES.encrypt(req.body.password, process.env.PWRD_SEC_KEY).toString()
+    console.log('img', req.body.img)
     try {
         const updatedUser = await User.findByIdAndUpdate(req.params.id, {
             $set: req.body
         }, { new: true })
-        res.redirect('/get-user', 303);
+        res.redirect(303, '/get-users');
     } catch (error) {
         res.status(500).json(error)
     }
@@ -52,7 +52,6 @@ exports.put = async (req, res) => {
 //DELETE A USER
 exports.delete = async (req, res) => {
     try {
-        console.log('delete')
         await User.findByIdAndDelete(req.params.id)
         res.status(200).json("User deleted!")
     } catch (error) {
