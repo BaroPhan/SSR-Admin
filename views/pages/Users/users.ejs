@@ -1,0 +1,112 @@
+<!-- include header -->
+<%- include('../../include/header') %>
+<!-- /include header -->
+
+
+<!-- include sidebar -->
+<%- include('../../include/sidebar') %>
+<!-- /include sidebar -->
+<!-- Main Site -->
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">UserList</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">List of Users</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Fullname</th>
+                                        <th>Email</th>
+                                        <th>Profile picture</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>isAdmin</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% users.map(u => { %>
+                                        <tr>
+                                            <td><%= u.username %></td>
+                                            <td><%= u.fullname %></td>
+                                            <td><%= u.email %></td>
+                                            <td><img src=<%= u.img %>
+                                                style="width: 50px;
+                                                height: 50px;
+                                                border-radius: 50%;
+                                                object-fit: cover;
+                                                margin-right: 10px;" />
+                                            </td>
+                                            <td><%= u.phone %></td>
+                                            <td><%= u.address %></td>
+                                            <td><%= u.isAdmin %></td>
+                                            <td>
+                                                <a href="/update-user?id=<%= u._id%>" class="btn border-shadow update">
+                                                    <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                                </a>
+                                                <a class="btn border-shadow delete" user-id=<%= u._id%> >
+                                                    <span class="text-gradient"><i class="fas fa-times"></i></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+
+<!-- Main Footer -->
+<!-- include footer -->
+<%- include('../../include/footer') %>
+<!-- /include footer -->
+
+
+<!-- ./wrapper -->
+<!-- include foot -->
+<%- include('../../include/foot') %>
+<!-- /include foot -->
+<!-- /Main Site -->

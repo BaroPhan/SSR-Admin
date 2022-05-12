@@ -1,0 +1,111 @@
+<!-- include header -->
+<%- include('../../include/header') %>
+<!-- /include header -->
+
+
+<!-- include sidebar -->
+<%- include('../../include/sidebar') %>
+<!-- /include sidebar -->
+<!-- Main Site -->
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">ProductList</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">List of Products</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Categories</th>
+                                        <th>Size</th>
+                                        <th>Color</th>
+                                        <th>Price</th>
+                                        <th>Image</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% products.map(p => { %>
+                                        <tr>
+                                            <td><%= p.title %></td>
+                                            <td><%= p.desc %></td>
+                                            <td><%= p.categories %></td>
+                                            <td><%= p.size %></td>
+                                            <td><%= p.color %></td>
+                                            <td><%= p.price %></td>
+                                            <td><img src=<%= p.img %>
+                                                style="width: 50px;
+                                                height: 50px;
+                                                object-fit: cover;
+                                                margin-right: 10px;" />
+                                            </td>
+                                            <td>
+                                                <a href="/update-product?id=<%= p._id%>" class="btn border-shadow update">
+                                                    <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                                </a>
+                                                <a class="btn border-shadow delete" user-id=<%= p._id%> >
+                                                    <span class="text-gradient"><i class="fas fa-times"></i></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+
+<!-- Main Footer -->
+<!-- include footer -->
+<%- include('../../include/footer') %>
+<!-- /include footer -->
+
+
+<!-- ./wrapper -->
+<!-- include foot -->
+<%- include('../../include/foot') %>
+<!-- /include foot -->
+<!-- /Main Site -->
